@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusantara Pustaka Cendekia</title>
+    <link rel="stylesheet" href="/assets/css/adminx.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <img src="/assets/img/logo.png" alt="Logo" class="logo" />
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <nav id="nav-menu">
+                <a href="/index.html">Home</a>
+                <a href="#">Daftar Buku Ajar</a>
+                <a href="https://nuansafajarcemerlang.github.io/repository-ilmiah/">Repository</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero"
+        style="background-image: url('/assets/img/bg.png'); background-size: cover; background-position: center; height: 100vh; position: relative;">
+        <div class="hero-overlay"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; text-align: center; color: white">
+            <h1>Temukan Wawasan Baru & Pengalaman Tak Terlupakan<br>Lewat Satu Buku</h1>
+        </div>
+    </section>
+
+    <!-- SECTION TITLE -->
+    <h2 class="section-title">Form Pendaftaran Buku Ajar</h2>
+
+    <!-- PROGRAM CARDS -->
+    <section class="card-container">
+        <div class="card mb-grid">
+            <div class="card-body">
+                <form id="form-pendaftaran">
+                    <div class="form-group">
+                        <label class="form-label">Nama Lengkap dan Gelar</label>
+                        <input type="text" class="form-control" id="inputNama"
+                            placeholder="Masukan Nama Lengkap dan Gelar">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"> Nama Kampus/Institusi</label>
+                        <input type="text" class="form-control" id="inputNamaKampus"
+                            placeholder="Masukan Nama Kampus/Institusi">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Jabatan Struktural di kampus/Institusi</label>
+                        <input type="text" class="form-control" id="inputJabatan"
+                            placeholder="Masukan Jabatan Struktural di kampus/Institusi">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Jurusan</label>
+                        <select class="form-control" id="pilihJurusan">
+                            <option value="" disabled selected hidden>Pilih Jurusan</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nomor WA</label>
+                        <input type="number" class="form-control" id="inputNomorWA" placeholder="Masukan Nomor WA">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="inputEmail"
+                            placeholder="Masukan Alamat Email Anda">
+                    </div>
+                    <fieldset class="form-group">
+                        <div class="row">
+                            <legend class="col-form-legend col-sm-2 form-label">Apakah Bapak/Ibu pernah mengikuti
+                                program menulis buku di Optimal</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                            value="option1" checked>
+                                        Pernah
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                            value="option2">
+                                        Belum Pernah
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <img src="/assets/img/tf.jpg" style="width: 100%; height:300px; object-fit: cover;"
+                            alt="Pembayaran">
+                        <select class="form-control" id="pilihJudul">
+                            <option value="" disabled selected hidden>Pilih Paket</option>
+                            <option value="soft-anggota">Anggota Optimal: Paket Softcopy (e-book saja):
+                                Rp249.000/penulis/topik</option>
+                            <option value="soft-nonanggota">Non-Anggota Optimal: Paket Softcopy (e-book saja):
+                                Rp299.000/penulis/topik</option>
+                            <option value="hard-anggota">Anggota Optimal: Paket Lengkap Softcopy + Hardcopy (e-book +
+                                buku cetak): Rp349.000/penulis/topik + 1 Buku Cetak (Belum Termasuk Ongkir)</option>
+                            <option value="hard-nonanggota">Non-Anggota Optimal: Paket Lengkap Softcopy + Hardcopy
+                                (e-book + buku cetak): Rp499.000/penulis/topik + 1 Buku Cetak (Belum Termasuk Ongkir)
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- form alamat disembunyikan dulu -->
+                    <div class="form-group" id="formAlamat" style="display: none;">
+                        <label class="form-label">Alamat</label>
+                        <textarea class="form-control" id="inputAlamat" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Upload Bukti Pembayaran</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="buktiPembayaran"
+                                accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.zip" />
+                            <label class="custom-file-label" for="buktiPembayaran">Pilih file</label>
+                        </div>
+                        <small style="color:gray;">Format yang didukung: JPG, PNG, PDF, DOC, DOCX, ZIP</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Daftar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <img src="/assets/img/logo.png" alt="Nuansa Fajar Cemerlang" class="footer-logo" />
+                <p>Nuansa Fajar Cemerlang menyajikan produk pendidikan digital yang efektif dan mudah diakses.</p>
+            </div>
+            <div class="footer-section links">
+                <h4>Halaman Terkait</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Books</a></li>
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h4>Tautan Resmi</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Terhubung Bersama Kami</h4>
+                <p>📍 Jakarta Barat, DKI Jakarta</p>
+                <p>✉️ operasionalnnfc@gmail.com</p>
+                <p>📞 021-29866319</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Penerbit Nuansa Fajar Cemerlang</p>
+            <p>Copyright © 2025 by Nuansa Fajar Cemerlang. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JS: Supabase + Form Handler -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/dist/umd/supabase.min.js"></script>
+    <script>
+        const client = supabase.createClient(
+            'https://hjbbtopfawoknagnjned.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhqYmJ0b3BmYXdva25hZ25qbmVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxNzk1NzEsImV4cCI6MjA3MTc1NTU3MX0.NXtNptDjskTguSKMtLVU5p-BXJtERsjqtAL2yf2Mtfg'
+        );
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("form-pendaftaran");
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const nama = document.getElementById('inputNama').value.trim();
+                const email = document.getElementById('inputEmail').value.trim();
+                const alamat = document.getElementById('inputAlamat').value.trim();
+                const judulBuku = document.getElementById('pilihJudul').value;
+                const fileInput = document.getElementById('buktiPembayaran');
+                const file = fileInput.files[0];
+
+                if (!nama || !email || !alamat || !judulBuku || !file) {
+                    alert("Mohon lengkapi semua data!");
+                    return;
+                }
+
+                const fileName = `${Date.now()}_${file.name}`;
+                const { data: uploadData, error: uploadError } = await client.storage
+                    .from('buktiPembayaran')  // samakan dengan nama bucket Anda
+                    .upload(fileName, file);
+
+                if (uploadError) {
+                    console.error("Upload gagal:", uploadError.message);
+                    alert("Upload bukti pembayaran gagal.");
+                    return;
+                }
+
+                const { data: { publicUrl } } = client.storage
+                    .from('buktiPembayaran')
+                    .getPublicUrl(fileName);
+
+                const { data, error } = await client
+                    .from('pendaftarbukuajar')
+                    .insert([{
+                        nama,
+                        email,
+                        alamat,
+                        judul_buku: judulBuku,
+                        buktiPembayaran: publicUrl,
+                    }]);
+
+                if (error) {
+                    console.error("Gagal menyimpan:", error.message);
+                    alert("Gagal menyimpan data.");
+                } else {
+                    alert("Pendaftaran berhasil!");
+                    resetFileInput();
+                    form.reset();
+                }
+            });
+        });
+    </script>
+    <script>
+        const fileInput = document.getElementById("buktiPembayaran");
+
+        // Saat pilih file → update label
+        fileInput.addEventListener("change", function () {
+            var fileName = this.files[0] ? this.files[0].name : "Pilih file";
+            this.nextElementSibling.innerText = fileName;
+        });
+
+        // Fungsi reset setelah daftar/upload berhasil
+        function resetFileInput() {
+            fileInput.value = ""; // reset isi input
+            fileInput.nextElementSibling.innerText = "Pilih file"; // reset label
+        }
+
+        // ✅ Contoh panggil fungsi reset setelah sukses daftar/upload
+        // Misalnya setelah Supabase upload selesai:
+    </script>
+    <script>
+        document.getElementById("pilihJudul").addEventListener("change", function () {
+            var value = this.value;
+            var formAlamat = document.getElementById("formAlamat");
+
+            // hanya tampil kalau pilih paket hardcopy
+            if (value === "hard-anggota" || value === "hard-nonanggota") {
+                formAlamat.style.display = "block";
+            } else {
+                formAlamat.style.display = "none";
+            }
+        });
+    </script>
+
+    <!-- JS: Menu Toggle -->
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    </script>
+
+</body>
+
+</html>
