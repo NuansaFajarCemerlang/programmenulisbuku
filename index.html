@@ -2,152 +2,178 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nusantara Pustaka Cendekia</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nusantara Pustaka Cendekia</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
 </head>
 
-
 <body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-container">
+      <img src="/assets/img/logo.png" alt="Logo" class="logo" />
 
-    <!-- HEADER -->
-    <header>
-        <div class="container header-container">
-            <img src="/assets/img/logo.png" alt="Logo" class="logo" />
+      <!-- Tombol hamburger -->
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
 
-            <!-- Tombol hamburger -->
-            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <nav id="nav-menu">
+        <a href="#">Home</a>
+        <a href="#">Daftar Buku Ajar</a>
+        <a href="https://nuansafajarcemerlang.github.io/repository-ilmiah/">Repository</a>
+      </nav>
+    </div>
+  </header>
 
-            <nav id="nav-menu">
-                <a href="#">Home</a>
-                <a href="#">Daftar Buku Ajar</a>
-                <a href="https://nuansafajarcemerlang.github.io/repository-ilmiah/">Repository</a>
-            </nav>
-        </div>
-    </header>
+  <!-- HERO SECTION -->
+  <section class="hero" style="background-image: url('assets/img/bg.png'); background-size: cover; background-position: center; height: 100vh; position: relative;">
+    <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+      <h1>Temukan Wawasan Baru & Pengalaman Tak Terlupakan<br>Lewat Satu Buku</h1>
+    </div>
+  </section>
 
+  <!-- SECTION TITLE -->
+  <h2 class="section-title">Daftar Buku Ajar</h2>
 
-    <!-- HERO SECTION -->
-    <section class="hero" style="background-image: url('assets/img/bg.png'); background-size: cover; background-position: center; height: 100vh; position: relative;";>
-        <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; text-align: center; color: white";>
-            <h1>Temukan Wawasan Baru & Pengalaman Tak Terlupakan<br>Lewat Satu Buku</h1>
-        </div>
-    </section>
+  <!-- PROGRAM CARDS -->
+  <section class="card-container">
+    <!-- CARD 1 -->
+    <div class="card">
+      <img src="assets/img/bg.png" alt="Buku Ajar">
+      <div class="card-content">
+        <h3>Program Menulis Buku Ajar</h3>
+        <p>Program penulisan buku ajar yang sesuai kurikulum dengan pendampingan.</p>
+        <a href="/daftar/bukuajar.html" class="btn" id="btn-buku-ajar">Daftar</a>
+      </div>
+    </div>
 
-    <!-- SECTION TITLE -->
-    <h2 class="section-title">Daftar Buku Ajar</h2>
+    <!-- CARD 2 -->
+    <div class="card">
+      <img src="assets/img/bg.png" alt="Book Chapter">
+      <div class="card-content">
+        <h3>Program Menulis Book Chapter</h3>
+        <p>Kolaborasi penulisan buku dalam format chapter oleh beberapa penulis.</p>
+        <a href="/daftar/bukuchapter.html" class="btn" id="btn-book-chapter">Daftar</a>
+      </div>
+    </div>
 
-    <!-- PROGRAM CARDS -->
-    <section class="card-container">
-        <!-- CARD 1 -->
-        <div class="card">
-            <img src="assets/img/bg.png" alt="Buku Ajar">
-            <div class="card-content">
-                <h3>Program Menulis Buku Ajar</h3>
-                <p>Program penulisan buku ajar yang sesuai kurikulum dengan pendampingan.</p>
-                <a href="/daftar/bukuajar.html" class="btn" id="btn-buku-ajar">Daftar</a>
-            </div>
-        </div>
+    <!-- CARD 3 -->
+    <div class="card">
+      <img src="assets/img/bg.png" alt="Referensi">
+      <div class="card-content">
+        <h3>Program Menulis Referensi</h3>
+        <p>Penyusunan buku referensi ilmiah sebagai sumber rujukan terpercaya.</p>
+        <a href="/daftar/bukureferensi.html" class="btn" id="btn-referensi">Daftar</a>
+      </div>
+    </div>
 
-        <!-- CARD 2 -->
-        <div class="card">
-            <img src="assets/img/bg.png" alt="Book Chapter">
-            <div class="card-content">
-                <h3>Program Menulis Book Chapter</h3>
-                <p>Kolaborasi penulisan buku dalam format chapter oleh beberapa penulis.</p>
-                <a href="/daftar/bukuchapter.html" class="btn" id="btn-buku-chapter">Daftar</a>
-            </div>
-        </div>
+    <!-- CARD 4 -->
+    <div class="card">
+      <img src="assets/img/bg.png" alt="Monograf">
+      <div class="card-content">
+        <h3>Program Menulis Monogram</h3>
+        <p>Penulisan buku monograf dengan topik tunggal oleh satu penulis ahli.</p>
+        <a href="/daftar/bukumonograf.html" class="btn" id="btn-monograf">Daftar</a>
+      </div>
+    </div>
+  </section>
 
-        <!-- CARD 3 -->
-        <div class="card">
-            <img src="assets/img/bg.png" alt="Referensi">
-            <div class="card-content">
-                <h3>Program Menulis Referensi</h3>
-                <p>Penyusunan buku referensi ilmiah sebagai sumber rujukan terpercaya.</p>
-                <a href="/daftar/bukureferensi.html" class="btn" id="btn-buku-referensi">Daftar</a>
-            </div>
-        </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section about">
+        <img src="/assets/img/logo.png" alt="Nuansa Fajar Cemerlang" class="footer-logo" />
+        <p>
+          Nuansa Fajar Cemerlang menyajikan produk pendidikan digital yang
+          efektif dan mudah diakses.
+        </p>
+      </div>
+      <div class="footer-section links">
+        <h4>Halaman Terkait</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Books</a></li>
+        </ul>
+      </div>
+      <div class="footer-section links">
+        <h4>Tautan Resmi</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact">
+        <h4>Terhubung Bersama Kami</h4>
+        <p>📍 Jakarta Barat, DKI Jakarta</p>
+        <p>✉️ operasionalnnfc@gmail.com</p>
+        <p>📞 021-29866319</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Penerbit Nuansa Fajar Cemerlang</p>
+      <p>Copyright © 2025 by Nuansa Fajar Cemerlang. All rights reserved.</p>
+    </div>
+  </footer>
 
-        <!-- CARD 4 -->
-        <div class="card">
-            <img src="assets/img/bg.png" alt="Monograf">
-            <div class="card-content">
-                <h3>Program Menulis Monogram</h3>
-                <p>Penulisan buku monograf dengan topik tunggal oleh satu penulis ahli.</p>
-                <a href="/daftar/bukumonograf.html" class="btn" id="btn-buku-monograf">Daftar</a>
-            </div>
-        </div>
-    </section>
+  <!-- Script Supabase untuk sembunyikan tombol -->
+  <script>
+    // 🔑 Ganti dengan URL & anon key project Supabase kamu
+    const SUPABASE_URL = "https://hjbbtopfawoknagnjned.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhqYmJ0b3BmYXdva25hZ25qbmVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxNzk1NzEsImV4cCI6MjA3MTc1NTU3MX0.NXtNptDjskTguSKMtLVU5p-BXJtERsjqtAL2yf2Mtfg";
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section about">
-                <img src="/assets/img/logo.png" alt="Nuansa Fajar Cemerlang" class="footer-logo" />
-                <p>
-                    Nuansa Fajar Cemerlang menyajikan produk pendidikan digital yang
-                    efektif dan mudah diakses.
-                </p>
-            </div>
-            <div class="footer-section links">
-                <h4>Halaman Terkait</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Books</a></li>
-                </ul>
-            </div>
-            <div class="footer-section links">
-                <h4>Tautan Resmi</h4>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">Disclaimer</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section contact">
-                <h4>Terhubung Bersama Kami</h4>
-                <p>📍 Jakarta Barat, DKI Jakarta</p>
-                <p>✉️ operasionalnnfc@gmail.com</p>
-                <p>📞 021-29866319</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Penerbit Nuansa Fajar Cemerlang</p>
-            <p>Copyright © 2025 by Nuansa Fajar Cemerlang. All rights reserved.</p>
-        </div>
-    </footer>
-
-</body>
-<script>
-    const programStatus = {
-        'buku-ajar': 'btn-buku-ajar',
-        'book-chapter': 'btn-buku-chapter',
-        'referensi': 'btn-buku-referensi',
-        'monograf': 'btn-buku-monograf',
+    const programButtons = {
+      "buku-ajar": "btn-buku-ajar",
+      "book-chapter": "btn-book-chapter",
+      "referensi": "btn-referensi",
+      "monograf": "btn-monograf",
     };
 
-    Object.entries(programStatus).forEach(([programId, buttonId]) => {
-        const status = localStorage.getItem(`program-${programId}`);
-        const btn = document.getElementById(buttonId);
+    // Load status dari Supabase
+    async function loadProgramStatus() {
+      const { data, error } = await client.from("settings").select("feature, status");
+      if (error) {
+        console.error("Gagal load:", error);
+        return;
+      }
 
-        if (status === 'nonaktif' && btn) {
-            btn.style.display = 'none'; // Sembunyikan tombol daftar
+      data.forEach(row => {
+        const btnId = programButtons[row.feature];
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          btn.style.display = row.status ? "inline-block" : "none";
         }
-    });
-</script>
+      });
+    }
 
-<script>
+    loadProgramStatus();
+
+    // Realtime listener -> update otomatis kalau admin ubah status
+    client
+      .channel("realtime:settings")
+      .on("postgres_changes", { event: "*", schema: "public", table: "settings" }, payload => {
+        const btnId = programButtons[payload.new.feature];
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          btn.style.display = payload.new.status ? "inline-block" : "none";
+        }
+      })
+      .subscribe();
+  </script>
+
+  <script>
+    // Toggle menu mobile
     const menuToggle = document.getElementById("menu-toggle");
     const navMenu = document.getElementById("nav-menu");
 
     menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
+      navMenu.classList.toggle("active");
     });
-</script>
-
+  </script>
+</body>
 </html>
