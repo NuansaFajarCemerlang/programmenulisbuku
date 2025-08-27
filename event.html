@@ -486,8 +486,8 @@
                                                 <td>Program Menulis Buku Ajar</td>
                                                 <td>
                                                     <!-- <span class="badge badge-pill badge-primary">Admin</span> -->
-                                                    <button class="toggle-button"
-                                                        id="toggle-buku-ajar">Loading...</button>
+                                                    <button id="toggle-buku-ajar"
+                                                        class="toggle-button">Loading...</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -501,8 +501,8 @@
                                                 <td>Program Menulis Buku Chapter</td>
                                                 <td>
                                                     <!-- <span class="badge badge-pill badge-primary">Admin</span> -->
-                                                    <button class="toggle-button"
-                                                        id="toggle-book-chapter">Loading...</button>
+                                                    <button id="toggle-book-chapter"
+                                                        class="toggle-button">Loading...</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -516,8 +516,8 @@
                                                 <td>Program Menulis Buku Referensi</td>
                                                 <td>
                                                     <!-- <span class="badge badge-pill badge-primary">Admin</span> -->
-                                                    <button class="toggle-button"
-                                                        id="toggle-referensi">Loading...</button>
+                                                    <button id="toggle-referensi"
+                                                        class="toggle-button">Loading...</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -531,8 +531,8 @@
                                                 <td>Program Menulis Buku Monograf</td>
                                                 <td>
                                                     <!-- <span class="badge badge-pill badge-primary">Admin</span> -->
-                                                    <button class="toggle-button"
-                                                        id="toggle-monograf">Loading...</button>
+                                                    <button id="toggle-monograf"
+                                                        class="toggle-button">Loading...</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -605,7 +605,13 @@
     <!-- If you prefer vanilla JS these are the only required scripts -->
     <!-- script src="../dist/js/vendor.js"></script>
     <script src="../dist/js/adminx.vanilla.js"></script-->
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
     <script>
+        // 🔑 Ganti dengan URL & anon key project kamu
+        const SUPABASE_URL = "https://hjbbtopfawoknagnjned.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhqYmJ0b3BmYXdva25hZ25qbmVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxNzk1NzEsImV4cCI6MjA3MTc1NTU3MX0.NXtNptDjskTguSKMtLVU5p-BXJtERsjqtAL2yf2Mtfg";
+        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
         const programs = [
             { id: 'buku-ajar', name: 'Program Buku Ajar' },
             { id: 'book-chapter', name: 'Program Book Chapter' },
@@ -613,27 +619,68 @@
             { id: 'monograf', name: 'Program Monograf' },
         ];
 
-        programs.forEach(program => {
-            const key = `program-${program.id}`;
-            const button = document.getElementById(`toggle-${program.id}`);
-
-            // Load status dari localStorage
-            let status = localStorage.getItem(key) || 'aktif';
-
-            function updateButton() {
-                button.textContent = (status === 'aktif') ? 'Nonaktifkan' : 'Aktifkan';
-                button.className = 'toggle-button ' + ((status === 'aktif') ? 'aktif' : 'nonaktif');
+        function setButtonUI(button, status) {
+            if (status) {
+                button.textContent = "Nonaktifkan";
+                button.className = "toggle-button aktif";
+            } else {
+                button.textContent = "Aktifkan";
+                button.className = "toggle-button nonaktif";
             }
+        }
 
-            button.addEventListener('click', () => {
-                status = (status === 'aktif') ? 'nonaktif' : 'aktif';
-                localStorage.setItem(key, status);
-                updateButton();
+        async function loadStatus(program) {
+            const { data, error } = await client
+                .from("settings")
+                .select("status")
+                .eq("feature", program.id)
+                .single();
+
+            if (error) {
+                console.error("Load error:", error);
+                return true; // default aktif
+            }
+            return data.status;
+        }
+
+        async function updateStatus(program, newStatus) {
+            const { error } = await client
+                .from("settings")
+                .update({ status: newStatus, updated_at: new Date() })
+                .eq("feature", program.id);
+
+            if (error) console.error("Update error:", error);
+        }
+
+        // Inisialisasi tombol
+        programs.forEach(async (program) => {
+            const button = document.getElementById(`toggle-${program.id}`);
+            let status = await loadStatus(program);
+            setButtonUI(button, status);
+
+            button.addEventListener("click", async () => {
+                status = !status;
+                setButtonUI(button, status);
+                await updateStatus(program, status);
             });
-
-            updateButton();
         });
+
+        // 🔔 Realtime listener
+        client
+            .channel("settings-changes")
+            .on(
+                "postgres_changes",
+                { event: "*", schema: "public", table: "settings" },
+                (payload) => {
+                    const programId = payload.new.feature;
+                    const newStatus = payload.new.status;
+                    const button = document.getElementById(`toggle-${programId}`);
+                    if (button) setButtonUI(button, newStatus);
+                }
+            )
+            .subscribe();
     </script>
+
     <script>
         fetch('../partials/navbar.html')
             .then(res => res.text())
